@@ -1,0 +1,436 @@
+/* Diagnosis Styles */
+.diagnosis-section {
+  background-color: var(--surface);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+
+.diagnosis-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: var(--surface);
+  padding: 24px 24px 0;
+}
+
+.diagnosis-title {
+  margin-bottom: 16px;
+}
+
+.diagnosis-title h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.diagnosis-title > p {
+  color: var(--text-secondary);
+}
+
+.search-container {
+  padding: 16px 0;
+  border-bottom: 1px solid var(--divider);
+}
+
+.symptoms-list {
+  padding: 24px;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.symptom-item {
+  padding: 16px;
+  border-radius: 8px;
+  background-color: var(--background);
+  margin-bottom: 12px;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.symptom-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.symptom-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.symptom-title {
+  font-weight: 500;
+  flex: 1;
+  margin-right: 16px;
+}
+
+.symptom-code {
+  font-size: 0.875rem;
+  color: white;
+  background-color: var(--primary);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.symptom-cancel {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: var(--danger);
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  transition: all 0.2s ease;
+}
+
+.symptom-cancel:hover {
+  background-color: #DC2626;
+  transform: scale(1.1);
+}
+
+.symptom-item.selected .symptom-cancel {
+  display: flex;
+}
+
+.confidence-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.confidence-label {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.confidence-options {
+  display: flex;
+  gap: 4px;
+}
+
+.confidence-option {
+  flex: 1;
+  padding: 8px 4px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  background-color: var(--surface);
+  font-size: 0.75rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.confidence-option:hover {
+  background-color: var(--divider);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.confidence-option:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.confidence-option::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background-color: rgba(59, 130, 246, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease;
+}
+
+.confidence-option:active::after {
+  width: 100px;
+  height: 100px;
+}
+
+.confidence-option.selected {
+  background-color: var(--primary);
+  color: white;
+  border-color: var(--primary);
+  transform: scale(1.05);
+}
+
+.diagnosis-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: flex-end;
+  padding: 16px 24px;
+  background-color: var(--divider);
+  border-top: 1px solid var(--border);
+}
+
+.diagnosis-results {
+  background-color: var(--surface);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  padding: 24px;
+  margin-top: 24px;
+}
+
+.diagnosis-results h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.no-results {
+  text-align: center;
+  padding: 48px 24px;
+  color: var(--text-tertiary);
+}
+
+.no-results i {
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+
+.diagnosis-loading {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+}
+
+.diagnosis-loading p {
+  margin-top: 16px;
+  color: var(--text-secondary);
+}
+
+.results-content {
+  display: none;
+}
+
+.top-result {
+  background-color: var(--background);
+  border-radius: 8px;
+  padding: 24px;
+  margin-bottom: 24px;
+  border-left: 4px solid var(--primary);
+}
+
+.top-result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.top-result-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.result-percentage {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.top-result-symptoms {
+  margin-top: 16px;
+}
+
+.top-result-symptoms h4 {
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: var(--text-secondary);
+}
+
+.symptom-chip {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background-color: var(--primary);
+  color: white;
+  font-size: 0.75rem;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.results-list {
+  margin-top: 16px;
+}
+
+.result-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  border-radius: 8px;
+  background-color: var(--background);
+  margin-bottom: 8px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.result-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.result-item:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.result-item::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background-color: rgba(59, 130, 246, 0.1);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease;
+}
+
+.result-item:active::after {
+  width: 200px;
+  height: 200px;
+}
+
+.result-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.result-title {
+  font-weight: 500;
+}
+
+.result-code {
+  font-size: 0.75rem;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.damage-details {
+  padding: 16px;
+}
+
+.damage-info {
+  margin-bottom: 24px;
+}
+
+.damage-info h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.damage-description {
+  color: var(--text-secondary);
+}
+
+.damage-cf {
+  background-color: var(--primary);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 16px;
+  display: inline-block;
+  margin-top: 8px;
+}
+
+.symptoms-contributed {
+  margin-bottom: 24px;
+}
+
+.symptoms-contributed h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.symptom-contribution {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px;
+  border-radius: 8px;
+  background-color: var(--background);
+  margin-bottom: 8px;
+}
+
+.symptom-contribution-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.symptom-contribution-title {
+  font-weight: 500;
+}
+
+.symptom-contribution-code {
+  font-size: 0.75rem;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.symptom-contribution-value {
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.repair-suggestions {
+  margin-bottom: 24px;
+}
+
+.repair-suggestions h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.repair-suggestion-item {
+  padding: 12px;
+  border-radius: 8px;
+  background-color: var(--background);
+  margin-bottom: 8px;
+}
+
+.repair-suggestion-title {
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.repair-suggestion-description {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+}
+
+.view-detail-btn {
+  margin-top: 16px;
+}
+
+@media (max-width: 768px) {
+  .confidence-options {
+    flex-direction: column;
+  }
+  
+  .confidence-option {
+    padding: 12px;
+  }
+}
